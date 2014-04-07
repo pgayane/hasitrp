@@ -79,4 +79,11 @@ parse toks = let (tree, toks') = expression toks
                then tree
                else error $ "Leftover tokens: " ++ show toks'
 
-main = (print . parse . tokenize) "(2+3+4)*2"
+eval :: Expr -> Double
+eval (NumExpr n) = n
+eval (SumExpr Plus e0 e1) = (eval e0) + (eval e1)
+eval (SumExpr Minus e0 e1) = (eval e0) - (eval e1)
+eval (ProdExpr Div e0 e1) = (eval e0) / (eval e1)
+eval (ProdExpr Times e0 e1) = (eval e0) * (eval e1)
+
+main = (print . eval . parse . tokenize) "(2+3+4)*2 + (2*5 + 2)/6"
