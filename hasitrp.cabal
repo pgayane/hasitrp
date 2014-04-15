@@ -1,0 +1,14 @@
+name:                hasitrp
+version:             0.1.0.0
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable hasitrp
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       Lib.Lexer,
+                       Lib.Parser,
+                       Lib.Evaluator
+  build-depends:       base >=4.6 && <4.7
+  default-language:    Haskell2010
